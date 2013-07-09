@@ -1,14 +1,16 @@
+require 'haml'
+
 get '/' do
   erb :index
 end
 
-get '/flizzyfridays' do
+get '/tweet/flizzyfridays' do
   @user = TwitterUser.find_or_create_by_username("flizzardnation")
   if @user.tweets_stale?
     @user.repopulate_tweets
   end
   @tweets = @user.tweets
-  erb :flizzy
+  haml :flizzy
 end
 
 get '/:username' do |username|

@@ -1,13 +1,9 @@
-%h1=Tweets for @user.username
-%ul
-  -@tweets.each do |tweet|
-  %li.each_tweet=tweet.content
-  -end
-
-
-/ <ul>
-/   <% @tweets.each do |tweet| %>
-/     <li class="each_tweet"><%= tweet.content %></li>
-/   <% end %>
-/ </ul>
+%h1 Tweets for #{@user.username}
+-@tweets.each do |tweet|
+  %li.each_tweet #{tweet.content}
+%br
+%h3 Send A message to FlizzardNation
+%form.flizzard_form
+  %textarea{type: "text", name: "flizzard_tweet_input", rows: "3", cols: "60"}
+  %input#tweet_enter_button{type: "submit", name: "to_to_flizzy"}
 

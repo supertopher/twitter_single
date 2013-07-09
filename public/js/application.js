@@ -14,21 +14,27 @@ $(document).ready(function() {
     });
   });
 
-  $('.flizzard_tweets').click(function(event){
+  $('.flizzard_tweet_link').click(function(event){
     event.preventDefault();
     loadStarter();
-  });
-});
-
-var loadStarter = function(){
-  $('.whole_thing').children().fadeOut();
-  $('.a_beecha_ball').show();
-  $.ajax({
-      url: "http://localhost:9393/flizzardnation",
+    $.ajax({
+      url: "http://localhost:9393/tweet/flizzyfridays",
       method: 'get'
     }).done(function(requestData) {
       $('.a_beecha_ball').hide();
       $('.whole_thing').append(requestData).fadeIn();
       $('.twitter_username').fadeIn();
     });
+  });
+
+  $('.flizzard_form').on('submit', function(event){
+    console.log('helpme!!!')
+    event.preventDefault;
+    alert('sup');
+  });
+});
+
+var loadStarter = function(){
+  $('.whole_thing').children().fadeOut();
+  $('.a_beecha_ball').show();
 }
