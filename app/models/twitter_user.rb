@@ -6,8 +6,8 @@ class TwitterUser < ActiveRecord::Base
   def fetch_tweets
     twitter_array = Twitter.user_timeline(self.username, count: 10)
     if twitter_array.empty?
-      self.tweets << {content: "No Tweets!", created_at: Time.now}
-    else 
+      self.tweets << Tweet.create(content:"No Tweets!")
+    else
       twitter_array.each do |tweet|
         self.tweets << Tweet.create(content: tweet.text)
       end
