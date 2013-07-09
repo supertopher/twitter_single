@@ -1,7 +1,13 @@
-<h1>Tweets for <%= @user.username %></h1>
-<ul>
-  <% @tweets.each do |tweet| %>
-    <li class="each_tweet"><%= tweet.content %></li>
-  <% end %>
-</ul>
+%h1=Tweets for @user.username
+%ul
+  -@tweets.each do |tweet|
+  %li.each_tweet=tweet.content
+  -end
+
+
+/ <ul>
+/   <% @tweets.each do |tweet| %>
+/     <li class="each_tweet"><%= tweet.content %></li>
+/   <% end %>
+/ </ul>
 

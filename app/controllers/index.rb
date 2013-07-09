@@ -2,13 +2,12 @@ get '/' do
   erb :index
 end
 
-get '/flizzyfridays'
+get '/flizzyfridays' do
   @user = TwitterUser.find_or_create_by_username("flizzardnation")
   if @user.tweets_stale?
     @user.repopulate_tweets
   end
   @tweets = @user.tweets
-
   erb :flizzy
 end
 
