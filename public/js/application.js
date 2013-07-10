@@ -24,17 +24,27 @@ $(document).ready(function() {
       $('.a_beecha_ball').hide();
       $('.whole_thing').append(requestData).fadeIn();
       $('.twitter_username').fadeIn();
+      tweetForm();
     });
   });
 
-  $('.flizzard_form').on('submit', function(event){
-    console.log('helpme!!!')
-    event.preventDefault;
-    alert('sup');
-  });
+
 });
 
 var loadStarter = function(){
   $('.whole_thing').children().fadeOut();
   $('.a_beecha_ball').show();
+}
+
+var tweetForm = function(){$('.flizzard_form').on('submit', function(event) {
+    event.preventDefault();
+    loadStarter();
+    var tweetText = $('.text_to_tweet').val();
+    $.post("/fizzytweet/post", {data: tweetText}).done(function(requestData){
+      $('.a_beecha_ball').hide();
+      $('.whole_thing').append(requestData).fadeIn();
+      $('.twitter_username').fadeIn();
+      tweetForm();
+      });
+  });
 }
